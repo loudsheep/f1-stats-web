@@ -5,6 +5,6 @@ export type Event = {
     OfficialEventName: string;
     EventDate: string;
     EventName: string;
-    EventFormat: "testing" | "conventional" | "sprint_qualifying";
+    EventFormat: "testing" | "conventional" | "sprint_qualifying" | "sprint" | "sprint_shootout";
     CountryCode: string;
 };
