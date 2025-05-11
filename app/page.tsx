@@ -1,5 +1,6 @@
 import DynamicSvg from "@/components/DynamicSvg";
 import { Event } from "@/types/schedule";
+import { locationToTrackName } from "@/util/tracks";
 
 // day long cache
 export const revalidate = 86400;
@@ -34,7 +35,7 @@ export default async function Home() {
                 </span>
             )}
 
-            <DynamicSvg url={`tracks/${nextEvent.Location.toLowerCase()}.svg`} className="[&>path]:stroke-white w-[50%] mx-auto"></DynamicSvg>
+            <DynamicSvg url={`tracks/${locationToTrackName(nextEvent.Location)}.svg`} className="[&>path]:stroke-white w-[50%] mx-auto"></DynamicSvg>
         </div>
     );
 }
