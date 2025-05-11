@@ -1,9 +1,8 @@
 import DynamicSvg from "@/components/DynamicSvg";
 import { Event } from "@/types/schedule";
-import Image from "next/image";
 
 // day long cache
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86400;
 
 export default async function Home() {
     const res = await fetch(process.env.BACKEND_URL + "/api/remaining");
