@@ -2,6 +2,9 @@ import DynamicSvg from "@/components/DynamicSvg";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
 
+// 12h long cache
+export const revalidate = 43200;
+
 const calculateDays = (startDate: string, endDate: string) => {
     let start = new Date(startDate);
     let end = new Date(endDate);

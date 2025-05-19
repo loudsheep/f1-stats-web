@@ -1,6 +1,9 @@
 import { ConstructorPointsInfo, DriverPointsInfo } from "@/types/standings";
 import React from "react";
 
+// 12h long cache
+export const revalidate = 43200;
+
 export default async function Standings() {
     const res = await fetch(process.env.BACKEND_URL + "/api/standings/drivers");
     const drivers: DriverPointsInfo[] = await res.json();

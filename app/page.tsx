@@ -2,8 +2,8 @@ import DynamicSvg from "@/components/DynamicSvg";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
 
-// day long cache
-export const revalidate = 86400;
+// 12h long cache
+export const revalidate = 43200;
 
 export default async function Home() {
     const res = await fetch(process.env.BACKEND_URL + "/api/remaining");
