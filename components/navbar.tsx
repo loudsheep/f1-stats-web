@@ -1,26 +1,45 @@
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
+
+const navLinks = [
+    { label: 'Schedule', href: '/schedule' },
+    { label: 'Standings', href: '/standings' },
+    { label: 'Telemetry', href: '/telemetry' },
+];
 
 export default function Navbar() {
     return (
-        <div className='flex items-center flex-col'>
-            <div className='flex-1'>
-                <a href="/">
-                    <h1 className='text-2xl'>
-                        F1 stats
-                    </h1>
-                </a>
+        <nav className="bg-[#281010] sticky top-0 z-20 w-full border-b border-red-700 mb-5">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-0">
+                <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    
+                    <span className="text-2xl font-semibold text-white whitespace-nowrap">F1 Stats</span>
+                </Link>
+                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <button
+                        type="button"
+                        className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                    >
+                        About
+                    </button>
+                </div>
+                <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+                    <ul className="flex flex-col p-4 mt-4 font-medium border rounded-lg bg-[#281010] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-[#281010]">
+                        {navLinks.map(({ label, href }) => (
+                            <li key={href}>
+                                <Link
+                                    href={href}
+                                    className={
+                                        'block py-2 px-3 rounded-sm md:p-0 text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent md:hover:text-red-500'
+                                    }
+                                >
+                                    {label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-            <div className='w-100 flex justify-between items-center'>
-                <div className='border-b-2 hover:border-red-500'>
-                    <a href="/schedule">Schedule</a>
-                </div>
-                <div className='border-b-2 hover:border-red-500'>
-                    <a href="/standings">Standings</a>
-                </div>
-                <div className='border-b-2 hover:border-red-500'>
-                    <a href="/telemetry">Telemetry</a>
-                </div>
-            </div>
-        </div>
-    )
+        </nav>
+    );
 }
