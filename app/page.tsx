@@ -35,7 +35,23 @@ export default async function Home() {
                 </span>
             )}
 
-            <DynamicSvg url={`tracks/${locationToTrackName(nextEvent.Location)}.svg`} className="[&>path]:stroke-white w-[50%] mx-auto"></DynamicSvg>
+            <div className="relative w-1/4 aspect-[16/9]"> {/* Maintain aspect ratio if needed */}
+                {/* Flag overlay - fills entire parent */}
+                <div
+                    className="absolute inset-0 bg-no-repeat bg-cover bg-center mix-blend-multiply pointer-events-none z-10"
+                    style={{
+                        backgroundImage: `url(https://countryflagsapi.netlify.app/flag/${nextEvent.CountryCode}.svg)`
+                    }}
+                />
+
+                {/* SVG Map - fills parent */}
+                <DynamicSvg
+                    url={`tracks/${locationToTrackName(nextEvent.Location)}.svg`}
+                    className="absolute inset-0 w-full h-full [&>path]:fill-black [&>path]:stroke-white z-0"
+                />
+            </div>
+
+
         </div>
     );
 }
