@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏎️ F1 Stats Web
 
-## Getting Started
+A passion project turned collaborative effort — this website is built by F1 enthusiasts who also happen to be developers.
 
-First, run the development server:
+## 📖 About
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project started as a side hobby to combine my love for Formula 1 with web development. As a fullstack developer, I began building this in my spare time — now a couple of friends have joined in, contributing their own skills and excitement for F1.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+We're building this because we love the sport and enjoy coding things we want to use ourselves.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **Python Django** (as backend)
 
-## Learn More
+## 🤝 Contributions
 
-To learn more about Next.js, take a look at the following resources:
+This is a passion-driven project, but we're open to feedback and ideas. If you're an F1 fan and developer, feel free to explore, suggest features, or fork the repo.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⭐ Support the Project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you like what we're doing, consider starring the repo or following us.
