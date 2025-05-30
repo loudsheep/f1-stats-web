@@ -1,9 +1,14 @@
 import DynamicSvg from "@/components/DynamicSvg";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
+import { Audiowide } from "next/font/google";
 
 // 12h long cache
 export const revalidate = 43200;
+
+export const audioWide = Audiowide({
+    weight: ['400']
+});
 
 export default async function Home() {
     const res = await fetch(process.env.BACKEND_URL + "/api/remaining");
@@ -17,13 +22,12 @@ export default async function Home() {
 
     return (
         <div className="flex flex-col justify-center items-center mx-auto gap-3">
-            <h1 className="text-3xl">Next race:</h1>
-
-            <div className="border-4 p-5">
+            <div className={"text-3xl p-5 " + audioWide.className}>
+                <span className="text-red-500">Next race: </span>
                 {nextEvent.OfficialEventName}
             </div>
 
-            <img src={`https://countryflagsapi.netlify.app/flag/${nextEvent.CountryCode}.svg`} alt="" className="max-h-32" />
+            {/* <img src={`https://countryflagsapi.netlify.app/flag/${nextEvent.CountryCode}.svg`} alt="" className="max-h-32" /> */}
 
             <span className="text-2xl">
                 {new Date(nextEvent.EventDate).toLocaleDateString()}
@@ -38,7 +42,7 @@ export default async function Home() {
             <div className="relative w-1/4 aspect-[16/9]"> {/* Maintain aspect ratio if needed */}
                 {/* Flag overlay - fills entire parent */}
                 <div
-                    className="absolute inset-0 bg-no-repeat bg-cover bg-center mix-blend-multiply pointer-events-none z-10"
+                    className="absolute inset-0 bg-no-repeat bg-cover bg-center opacity-25 pointer-events-none rounded-2xl"
                     style={{
                         backgroundImage: `url(https://countryflagsapi.netlify.app/flag/${nextEvent.CountryCode}.svg)`
                     }}
@@ -47,8 +51,9 @@ export default async function Home() {
                 {/* SVG Map - fills parent */}
                 <DynamicSvg
                     url={`tracks/${locationToTrackName(nextEvent.Location)}.svg`}
-                    className="absolute inset-0 w-full h-full [&>path]:fill-black [&>path]:stroke-white z-0"
+                    className="absolute inset-0 max-h-full max-w-full [&>path]:stroke-white z-1 p-5"
                 />
+
             </div>
 
 

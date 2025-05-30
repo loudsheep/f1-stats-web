@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import { audioWide } from '@/app/page';
 
 const navLinks = [
+    { label: 'Home', href: '/' },
     { label: 'Schedule', href: '/schedule' },
     { label: 'Standings', href: '/standings' },
     { label: 'Telemetry', href: '/telemetry' },
@@ -13,7 +15,9 @@ export default function Navbar() {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-0">
                 <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
 
-                    <span className="text-2xl font-semibold text-white whitespace-nowrap">F1 Stats</span>
+                    <span className={"text-2xl font-semibold text-white whitespace-nowrap " + audioWide.className}>
+                        F1 Stats
+                    </span>
                 </Link>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <a href="/about">
