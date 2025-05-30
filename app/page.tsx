@@ -2,6 +2,7 @@ import DynamicSvg from "@/components/DynamicSvg";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
 import { Audiowide } from "next/font/google";
+import Image from "next/image";
 
 // 12h long cache
 export const revalidate = 43200;
@@ -10,7 +11,7 @@ export const audioWide = Audiowide({
     weight: ['400']
 });
 
-const WeekendFormatConventional = () => <div className={"bg-red-500/25 py-1 pl-2 pr-3 border-l-3 border-red-500 " + audioWide.className}>
+const WeekendFormatConventional = () => <div className="bg-red-500/25 py-1 pl-2 pr-3 border-l-3 border-red-500">
     <div className="text-xs">
         Weekend format
     </div>
@@ -19,7 +20,7 @@ const WeekendFormatConventional = () => <div className={"bg-red-500/25 py-1 pl-2
     </div>
 </div>
 
-const WeekendFormatSprint = () => <div className={"bg-green-500/25 py-1 pl-2 pr-3 border-l-3 border-green-500 " + audioWide.className}>
+const WeekendFormatSprint = () => <div className="bg-green-500/25 py-1 pl-2 pr-3 border-l-3 border-green-500">
     <div className="text-xs">
         Weekend format
     </div>
@@ -47,13 +48,13 @@ export default async function Home() {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center mx-auto gap-3">
-            <div className={"text-3xl p-5 " + audioWide.className}>
+        <div className={"flex flex-col justify-center items-center mx-auto gap-5 " + audioWide.className}>
+            <div className="text-3xl p-5">
                 <span className="text-red-500">Next race: </span>
                 {nextEvent.OfficialEventName}
             </div>
 
-            <span className={"text-2xl " + audioWide.className}>
+            <span className="text-2xl">
                 {new Date(nextEvent.Session1Date).toLocaleDateString()} - {new Date(nextEvent.Session5Date).toLocaleDateString()}
             </span>
 
@@ -70,7 +71,7 @@ export default async function Home() {
                 <div className="row-span-4">
                     <div className="relative w-full">
                         <div className="opacity-25 pointer-events-none">
-                            <img src={`https://countryflagsapi.netlify.app/flag/${nextEvent.CountryCode}.svg`} alt="Country flag" className="w-full rounded-2xl" />
+                            <Image src={`https://countryflagsapi.netlify.app/flag/${nextEvent.CountryCode}.svg`} className="w-full rounded-2xl" alt="Country flag" width={1000} height={1000}></Image>
                         </div>
 
                         <DynamicSvg
@@ -80,7 +81,7 @@ export default async function Home() {
                     </div>
                 </div>
 
-                <div className={"row-span-3 flex flex-col gap-2 " + audioWide.className}>
+                <div className="row-span-3 flex flex-col gap-2">
                     {sessionKeys.map((idx) => {
                         const sessionKey = `Session${idx}` as keyof Event;
                         const dateKey = `Session${idx}Date` as keyof Event;
@@ -95,6 +96,11 @@ export default async function Home() {
                 </div>
 
             </div>
+
+            {/* TODO */}
+            {/* <span className="w-full sm:w-3/4 lg:w-2/3 2xl:w-1/2 pl-5 text-xl mt-10">Circuit info</span>
+            <div className="p-5 w-full sm:w-3/4 lg:w-2/3 2xl:w-1/2 flex flex-col md:grid grid-cols-2 grid-rows-4 gap-4">
+            </div> */}
         </div>
     );
 }
