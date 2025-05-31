@@ -7,7 +7,6 @@ type GithubButtonProps = {
 export default async function GithubButton({ username, repoName }: GithubButtonProps) {
     const res = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
     const json = await res.json();
-    console.log(json);
 
     const stars = json['stargazers_count'];
 
