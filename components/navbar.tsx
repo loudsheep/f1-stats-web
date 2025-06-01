@@ -1,21 +1,33 @@
-import React from 'react';
-import Link from 'next/link';
-import { audioWide } from '@/app/page';
+import React from "react";
+import Link from "next/link";
+import { Audiowide } from "next/font/google";
+
+const audioWide = Audiowide({
+    subsets: ["latin"],
+    weight: ["400"],
+});
 
 const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Schedule', href: '/schedule' },
-    { label: 'Standings', href: '/standings' },
-    { label: 'Telemetry', href: '/telemetry' },
+    { label: "Home", href: "/" },
+    { label: "Schedule", href: "/schedule" },
+    { label: "Standings", href: "/standings" },
+    { label: "Telemetry", href: "/telemetry" },
 ];
 
 export default function Navbar() {
     return (
         <nav className="bg-[#281010] sticky top-0 z-20 w-full border-b border-red-700 mb-5">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-0">
-                <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-
-                    <span className={"text-2xl font-semibold text-white whitespace-nowrap " + audioWide.className}>
+                <Link
+                    href="/"
+                    className="flex items-center space-x-3 rtl:space-x-reverse"
+                >
+                    <span
+                        className={
+                            "text-2xl font-semibold text-white whitespace-nowrap " +
+                            audioWide.className
+                        }
+                    >
                         F1 Stats
                     </span>
                 </Link>
@@ -36,7 +48,7 @@ export default function Navbar() {
                                 <Link
                                     href={href}
                                     className={
-                                        'block py-2 px-3 rounded-sm md:p-0 text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent md:hover:text-red-500'
+                                        "block py-2 px-3 rounded-sm md:p-0 text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent md:hover:text-red-500"
                                     }
                                 >
                                     {label}
