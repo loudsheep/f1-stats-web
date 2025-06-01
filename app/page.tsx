@@ -1,4 +1,5 @@
 import DynamicSvg from "@/components/DynamicSvg";
+import SessionTime from "@/components/SessionTime";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
 import { Audiowide } from "next/font/google";
@@ -29,11 +30,6 @@ const WeekendFormatSprint = () => <div className="bg-green-500/25 py-1 pl-2 pr-3
     </div>
 </div>
 
-const formatTime = (date: Date) => {
-    const h = (date.getHours() < 9 ? "0" : "") + date.getHours();
-    const m = (date.getMinutes() < 9 ? "0" : "") + date.getMinutes();
-    return `${h}:${m}`;
-}
 
 const sessionKeys = [1, 2, 3, 4, 5] as const;
 
@@ -87,10 +83,7 @@ export default async function Home() {
                         const dateKey = `Session${idx}Date` as keyof Event;
 
                         return (
-                            <div key={idx} className="flex-1 flex justify-between items-center px-2 bg-gray-500/20  border-l-3 border-gray-700">
-                                <div>{nextEvent[sessionKey]}</div>
-                                <div>{formatTime(new Date(nextEvent[dateKey] as string))}</div>
-                            </div>
+                            <SessionTime sessionName={nextEvent[sessionKey] as string} sessionDateUtc={new Date(nextEvent[dateKey] as string)}></SessionTime>
                         );
                     })}
                 </div>
