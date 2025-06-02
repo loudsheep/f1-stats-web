@@ -1,9 +1,16 @@
 import DynamicSvg from "@/components/DynamicSvg";
+import EventCard from "@/components/EventCard";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
+import { Audiowide } from "next/font/google";
 
 // 12h long cache
 export const revalidate = 43200;
+
+const audioWide = Audiowide({
+    subsets: ["latin"],
+    weight: ["400"],
+});
 
 const calculateDays = (startDate: string, endDate: string) => {
     let start = new Date(startDate);
@@ -11,48 +18,26 @@ const calculateDays = (startDate: string, endDate: string) => {
     let timeDifference = Math.abs(end.getTime() - start.getTime());
     let daysDifference = timeDifference / (1000 * 3600 * 24);
     return daysDifference;
-}
+};
 
 export default async function Schedule() {
     const res = await fetch(process.env.BACKEND_URL + "/api/schedule");
     const schedule: Event[] = await res.json();
 
     return (
-        <div className="flex flex-col justify-center items-center mx-auto ">
-            <h1 className="text-3xl">Schedule:</h1>
+        <div
+            className={
+                "flex flex-col justify-center items-center mx-auto gap-5 " +
+                audioWide.className
+            }
+        >
+            <div className="text-3xl p-5">Schedule for current season</div>
 
-            <div className="w-[60%] p-10">
+            <div className="grid w-full md:w-4/5 xl:w-3/4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-15 gap-x-4 p-5">
                 {schedule.map((event, idx) => (
-                    <div key={idx}>
-                        <div className={"my-2 flex flex-row items-center justify-between bg-gradient-to-r from-[#580000] to-[#000000] border-red-900 " + (new Date(event.EventDate) < new Date() ? "grayscale  p-1 h-5" : " p-2 h-10")}>
-                            <div className="h-full flex gap-5">
-                                <img src={`https://countryflagsapi.netlify.app/flag/${event.CountryCode}.svg`} alt="" className="max-h-full max-w-10" />
-
-                                <DynamicSvg url={`/tracks/${locationToTrackName(event.Location)}.svg`} className="max-h-full max-w-10 [&>path]:stroke-white [&>path]:stroke-[30]"></DynamicSvg>
-                            </div>
-
-                            <span className=" capitalize">
-                                {event.OfficialEventName.toLocaleLowerCase()}
-
-                                {event.EventFormat == "sprint_qualifying" && (
-                                    <span className="rounded-md px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Sprint</span>
-                                )}
-                            </span>
-
-                            <span>
-                                {new Date(event.EventDate).toLocaleDateString()}
-                            </span>
-                        </div>
-
-                        {/* Seperated events that are over a week apart from eac other */}
-                        {(idx + 1 < schedule.length && calculateDays(event.EventDate, schedule[idx + 1].EventDate) > 9) && (
-                            <div className="">
-                                &nbsp;
-                            </div>
-                        )}
-                    </div>
+                    <EventCard key={idx} {...event}></EventCard>
                 ))}
             </div>
         </div>
-    )
+    );
 }
