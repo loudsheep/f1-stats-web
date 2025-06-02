@@ -7,6 +7,9 @@ type EventCardProps = {
     Location: string;
     EventDate: string;
     EventName: string;
+    Season: number,
+    RoundNumber: number,
+    EventFormat: string,
 };
 
 export default function EventCard({
@@ -14,9 +17,11 @@ export default function EventCard({
     Location,
     EventDate,
     EventName,
+    Season,
+    RoundNumber
 }: EventCardProps) {
     return (
-        <a href="" className="">
+        <a href={`/results/${Season}/${RoundNumber}`} className="">
             <div className="h-full flex flex-col justify-between">
                 <div className="relative w-full">
                     <div className="opacity-25 pointer-events-none">

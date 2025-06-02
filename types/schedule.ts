@@ -1,4 +1,5 @@
 export type Event = {
+    Season: number,
     RoundNumber: number;
     Country: string;
     Location: string;

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Result() {
+export default function SessionResult() {
   return (
     <div>
-      THIS is results page
+      THIS is session results page
     </div>
   )
 }
