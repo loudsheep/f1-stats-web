@@ -30,13 +30,16 @@ const WeekendFormatSprint = () => (
 const sessionKeys = [1, 2, 3, 4, 5] as const;
 
 export default async function Home() {
-    const res = await fetch(process.env.BACKEND_URL + "/api/remaining");
-    const remaining: Event[] = await res.json();
+    const res = await fetch(process.env.BACKEND_URL + "/api/schedule");
+    const schedule: Event[] = await res.json();
+    const remaining = schedule.filter(
+        (e) => new Date(e.EventDate) >= new Date()
+    );
 
     const nextEvent = remaining.length > 0 ? remaining[0] : null;
 
     if (nextEvent == null) {
-        return <div>No more events remaining this season</div>;
+        return <div className="text-center text-xl">No more events remaining this season</div>;
     }
 
     return (
@@ -93,6 +96,7 @@ export default async function Home() {
 
                         return (
                             <SessionTime
+                                key={idx}
                                 sessionName={nextEvent[sessionKey] as string}
                                 sessionDateUtc={
                                     new Date(nextEvent[dateKey] as string)
