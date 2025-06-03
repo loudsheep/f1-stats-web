@@ -21,7 +21,7 @@ export default function EventCard({
     RoundNumber
 }: EventCardProps) {
     return (
-        <a href={`/results/${Season}/${RoundNumber}`} className="">
+        <a href={`/results/${RoundNumber}`} className="">
             <div className="h-full flex flex-col justify-between">
                 <div className="relative w-full">
                     <div className="opacity-25 pointer-events-none">
