@@ -24,3 +24,27 @@ export type RaceResult = {
     fastestLapNumber: number | null;
     fastestLapTime: string | null;
 };
+
+export type SessionResult = {
+    DriverNumber: string,
+    BroadcastName: string,
+    Abbreviation: string,
+    DriverId: string,
+    TeamName: string,
+    TeamColor: string,
+    TeamId: string,
+    FirstName: string,
+    LastName: string,
+    FullName: string,
+    HeadshotUrl: string,
+    CountryCode: string,
+    Position: number,
+    ClassifiedPosition: string,
+    GridPosition: number,
+    Q1: string | null,
+    Q2: string | null,
+    Q3: string | null,
+    Time: string | null,
+    Status: string,
+    Points: number,
+};
