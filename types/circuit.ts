@@ -1,4 +1,4 @@
-export type CiucuitInfo = {
+export type CircuitInfo = {
     lastWins: {
         position: number,
         positionText: string,
