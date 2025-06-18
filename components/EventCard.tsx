@@ -1,6 +1,7 @@
 import Image from "next/image";
 import DynamicSvg from "./DynamicSvg";
 import { locationToTrackName } from "@/util/tracks";
+// import ArrowForward from "@/public/icons/arrow_forward.svg";
 
 type EventCardProps = {
     CountryCode: string;
@@ -10,6 +11,7 @@ type EventCardProps = {
     Season: number,
     RoundNumber: number,
     EventFormat: string,
+    Session5Date: string,
 };
 
 export default function EventCard({
@@ -18,7 +20,8 @@ export default function EventCard({
     EventDate,
     EventName,
     Season,
-    RoundNumber
+    RoundNumber,
+    Session5Date
 }: EventCardProps) {
     return (
         <a href={`/results/${RoundNumber}`} className="">
@@ -46,6 +49,15 @@ export default function EventCard({
                         {new Date(EventDate).toLocaleDateString()}
                     </div>
                 </div>
+
+                {/* Check if session 5 (race) has ended at lest 3h ago */}
+                {new Date(Session5Date) < new Date(Date.now() - 1000 * 60 * 60 * 3) && (
+                    <div className="flex">
+                        <div className="flex items-center text-green-600 border-b border-green-600">See results
+                            <span className="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+                )}
             </div>
         </a>
     );

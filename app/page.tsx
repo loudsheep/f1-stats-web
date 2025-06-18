@@ -1,5 +1,7 @@
 import DynamicSvg from "@/components/DynamicSvg";
 import SessionTime from "@/components/SessionTime";
+import { WeekendFormatConventional } from "@/components/WeekendFormatConventional";
+import { WeekendFormatSprint } from "@/components/WeekendFormatSprint";
 import { Event } from "@/types/schedule";
 import { locationToTrackName } from "@/util/tracks";
 import { Audiowide } from "next/font/google";
@@ -12,20 +14,6 @@ const audioWide = Audiowide({
     subsets: ["latin"],
     weight: ["400"],
 });
-
-const WeekendFormatConventional = () => (
-    <div className="bg-red-500/25 py-1 pl-2 pr-3 border-l-3 border-red-500">
-        <div className="text-xs">Weekend format</div>
-        <div className="text-lg">Conventional</div>
-    </div>
-);
-
-const WeekendFormatSprint = () => (
-    <div className="bg-green-500/25 py-1 pl-2 pr-3 border-l-3 border-green-500">
-        <div className="text-xs">Weekend format</div>
-        <div className="text-lg">Sprint</div>
-    </div>
-);
 
 const sessionKeys = [1, 2, 3, 4, 5] as const;
 
@@ -81,7 +69,7 @@ export default async function Home() {
                         </div>
 
                         <DynamicSvg
-                            url={`tracks/${locationToTrackName(
+                            url={`/tracks/${locationToTrackName(
                                 nextEvent.Location
                             )}.svg`}
                             className="absolute inset-0 h-full w-full [&>path]:stroke-white z-1 p-5"
