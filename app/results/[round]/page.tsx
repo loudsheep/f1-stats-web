@@ -127,8 +127,8 @@ export default async function RoundResult({
                 {eventInfo.EventName}
             </div>
 
-            <div className="flex flex-col w-1/2 gap-2">
-                <div className="flex gap-2 justify-between mb-10">
+            <div className="flex flex-col w-full lg:w-3/4 xl:w-1/2 px-1 gap-2">
+                <div className="flex flex-col md:flex-row gap-2 justify-between mb-10">
                     {podium.map((result, idx) => (
                         <div
                             key={idx}
@@ -154,7 +154,7 @@ export default async function RoundResult({
                 {rest.map((result, idx) => (
                     <div
                         key={idx}
-                        className="flex-1 px-5 py-2 flex justify-between"
+                        className="flex-1 px-5 py-2 flex justify-between flex-wrap"
                         style={{
                             backgroundColor: "#" + result.TeamColor + "44",
                         }}
