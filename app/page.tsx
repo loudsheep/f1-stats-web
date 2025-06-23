@@ -1,4 +1,5 @@
 import FormatAndLocationSummary from "@/components/FormatAndLocationSummary";
+import WeekendCountdown from "@/components/WeekendCountdown";
 import { CircuitInfo } from "@/types/circuit";
 import { Event } from "@/types/schedule";
 import { Audiowide } from "next/font/google";
@@ -47,10 +48,13 @@ export default async function Home() {
                 {nextEvent.OfficialEventName}
             </div>
 
+            <WeekendCountdown {...nextEvent}/>
+
             <span className="text-2xl my-5">
                 {new Date(nextEvent.Session1Date).toLocaleDateString()} -{" "}
                 {new Date(nextEvent.Session5Date).toLocaleDateString()}
             </span>
+
 
             <FormatAndLocationSummary nextEvent={nextEvent} circuitInfo={circuitInfo} />
         </div>

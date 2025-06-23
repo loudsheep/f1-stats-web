@@ -1,7 +1,5 @@
-import DynamicSvg from "@/components/DynamicSvg";
 import EventCard from "@/components/EventCard";
 import { Event } from "@/types/schedule";
-import { locationToTrackName } from "@/util/tracks";
 import { Audiowide } from "next/font/google";
 
 // 12h long cache
@@ -11,14 +9,6 @@ const audioWide = Audiowide({
     subsets: ["latin"],
     weight: ["400"],
 });
-
-const calculateDays = (startDate: string, endDate: string) => {
-    let start = new Date(startDate);
-    let end = new Date(endDate);
-    let timeDifference = Math.abs(end.getTime() - start.getTime());
-    let daysDifference = timeDifference / (1000 * 3600 * 24);
-    return daysDifference;
-};
 
 export default async function Schedule() {
     const res = await fetch(process.env.BACKEND_URL + "/api/schedule");
