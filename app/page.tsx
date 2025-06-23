@@ -13,7 +13,6 @@ const audioWide = Audiowide({
 });
 
 
-
 export default async function Home() {
     const res = await fetch(process.env.BACKEND_URL + "/api/schedule");
     const schedule: Event[] = await res.json();
