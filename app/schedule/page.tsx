@@ -31,7 +31,7 @@ export default async function Schedule() {
                 audioWide.className
             }
         >
-            <div className="text-3xl p-5">Schedule for current season</div>
+            <div className="text-3xl p-5"><span className="text-red-500">Schedule</span> and <span className="text-red-500">results</span> for current season</div>
 
             <div className="grid w-full md:w-4/5 xl:w-3/4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-15 gap-x-4 p-5">
                 {schedule.map((event, idx) => (

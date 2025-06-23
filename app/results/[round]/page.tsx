@@ -1,10 +1,6 @@
-import DynamicSvg from "@/components/DynamicSvg";
-import SessionTime from "@/components/SessionTime";
-import { WeekendFormatConventional } from "@/components/WeekendFormatConventional";
-import { WeekendFormatSprint } from "@/components/WeekendFormatSprint";
+import FormatAndLocationSummary from "@/components/FormatAndLocationSummary";
 import { SessionResult } from "@/types/results";
 import { Event } from "@/types/schedule";
-import { locationToTrackName } from "@/util/tracks";
 import { Audiowide } from "next/font/google";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -20,8 +16,6 @@ const getEventByRound = (round: number, events: Event[]) => {
     }
     return null;
 };
-
-const sessionKeys = [1, 2, 3, 4, 5] as const;
 
 export default async function RoundResult({
     params,
@@ -64,53 +58,7 @@ export default async function RoundResult({
                     {new Date(eventInfo.Session5Date).toLocaleDateString()}
                 </span>
 
-                <div className="p-5 w-full sm:w-3/4 lg:w-2/3 2xl:w-1/2 flex flex-col md:grid grid-cols-2 grid-rows-4 gap-4">
-                    <div className="">
-                        {eventInfo.EventFormat.startsWith("sprint") ? (
-                            <WeekendFormatSprint />
-                        ) : (
-                            <WeekendFormatConventional />
-                        )}
-                    </div>
-
-                    <div className="row-span-4">
-                        <div className="relative w-full">
-                            <div className="opacity-25 pointer-events-none">
-                                <Image
-                                    src={`https://countryflagsapi.netlify.app/flag/${eventInfo.CountryCode}.svg`}
-                                    className="w-full rounded-2xl"
-                                    alt="Country flag"
-                                    width={1000}
-                                    height={1000}
-                                ></Image>
-                            </div>
-
-                            <DynamicSvg
-                                url={`/tracks/${locationToTrackName(
-                                    eventInfo.Location
-                                )}.svg`}
-                                className="absolute inset-0 h-full w-full [&>path]:stroke-white z-1 p-5"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="row-span-3 flex flex-col gap-2">
-                        {sessionKeys.map((idx) => {
-                            const sessionKey = `Session${idx}` as keyof Event;
-                            const dateKey = `Session${idx}Date` as keyof Event;
-
-                            return (
-                                <SessionTime
-                                    key={idx}
-                                    sessionName={eventInfo[sessionKey] as string}
-                                    sessionDateUtc={
-                                        new Date(eventInfo[dateKey] as string)
-                                    }
-                                ></SessionTime>
-                            );
-                        })}
-                    </div>
-                </div>
+                <FormatAndLocationSummary nextEvent={eventInfo} />
             </div>
         )
     }

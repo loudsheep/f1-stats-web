@@ -1,7 +1,6 @@
 import Image from "next/image";
 import DynamicSvg from "./DynamicSvg";
 import { locationToTrackName } from "@/util/tracks";
-// import ArrowForward from "@/public/icons/arrow_forward.svg";
 
 type EventCardProps = {
     CountryCode: string;
