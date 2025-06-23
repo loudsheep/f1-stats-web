@@ -53,11 +53,6 @@ export default async function RoundResult({
                     for {eventInfo.EventName}
                 </div>
 
-                <span className="text-2xl">
-                    {new Date(eventInfo.Session1Date).toLocaleDateString()} -{" "}
-                    {new Date(eventInfo.Session5Date).toLocaleDateString()}
-                </span>
-
                 <FormatAndLocationSummary nextEvent={eventInfo} />
             </div>
         )

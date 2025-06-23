@@ -12,6 +12,8 @@ const audioWide = Audiowide({
     weight: ["400"],
 });
 
+
+
 export default async function Home() {
     const res = await fetch(process.env.BACKEND_URL + "/api/schedule");
     const schedule: Event[] = await res.json();
@@ -47,14 +49,6 @@ export default async function Home() {
                 <span className="text-red-500">Next race: </span>
                 {nextEvent.OfficialEventName}
             </div>
-
-            <WeekendCountdown {...nextEvent}/>
-
-            <span className="text-2xl my-5">
-                {new Date(nextEvent.Session1Date).toLocaleDateString()} -{" "}
-                {new Date(nextEvent.Session5Date).toLocaleDateString()}
-            </span>
-
 
             <FormatAndLocationSummary nextEvent={nextEvent} circuitInfo={circuitInfo} />
         </div>

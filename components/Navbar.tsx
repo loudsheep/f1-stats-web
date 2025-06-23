@@ -20,7 +20,7 @@ export default function Navbar() {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-0">
                 <Link
                     href="/"
-                    className="flex items-center space-x-3 rtl:space-x-reverse"
+                    className="flex items-center space-x-3 pl-2 rtl:space-x-reverse"
                 >
                     <span
                         className={
@@ -31,7 +31,7 @@ export default function Navbar() {
                         F1 Stats
                     </span>
                 </Link>
-                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse pr-2">
                     <a href="/about">
                         <button
                             type="button"

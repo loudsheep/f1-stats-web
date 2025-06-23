@@ -30,7 +30,7 @@ const padNumberTwoDigits = (num: number) => {
 const TimerPart = ({ num, text }: { num: number, text: string }) => {
     return (
         <div className="flex-1 flex flex-col justify-center items-center">
-            <h1 className="text-2xl">{padNumberTwoDigits(num)}</h1>
+            <h1 className="text-xl">{padNumberTwoDigits(num)}</h1>
             <h2 className="text-xs text-white/30 uppercase">{text}</h2>
         </div>
     )
@@ -38,7 +38,7 @@ const TimerPart = ({ num, text }: { num: number, text: string }) => {
 
 const renderer = ({ days, hours, minutes, seconds }: RendererProps) => {
     return (
-        <div className="flex gap-10 px-10">
+        <div className="w-full flex justify-around">
             <TimerPart num={days} text="Days"></TimerPart>
 
             <div className="w-[1px] border-r border-white/40"></div>
@@ -80,7 +80,7 @@ export default function WeekendCountdown(props: WeekendCountdownProps) {
 
     return (
         <div className="flex flex-col justify-center items-center bg-gray-600/20 p-5 rounded-md">
-            <div className="flex-1 w-full border-b border-white/40 text-center mb-4 pb-2 text-2xl">{sessionName}</div>
+            <div className="flex-1 w-full border-b border-white/40 text-center mb-4 pb-2 text-xl">{sessionName}</div>
 
             <Countdown className="flex-1" date={date} renderer={renderer} intervalDelay={5000}></Countdown>
         </div>
