@@ -1,4 +1,4 @@
-import FormatAndLocationSummary from "@/components/FormatAndLocationSummary";
+import RaceWeekendSummary from "@/components/RaceWeekendSummary";
 import WeekendCountdown from "@/components/WeekendCountdown";
 import { CircuitInfo } from "@/types/circuit";
 import { Event } from "@/types/schedule";
@@ -50,7 +50,7 @@ export default async function Home() {
                 {nextEvent.OfficialEventName}
             </div>
 
-            <FormatAndLocationSummary nextEvent={nextEvent} circuitInfo={circuitInfo} />
+            <RaceWeekendSummary nextEvent={nextEvent} circuitInfo={circuitInfo} />
         </div>
     );
 }

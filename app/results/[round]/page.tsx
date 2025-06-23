@@ -1,4 +1,4 @@
-import FormatAndLocationSummary from "@/components/FormatAndLocationSummary";
+import RaceWeekendSummary from "@/components/RaceWeekendSummary";
 import { SessionResult } from "@/types/results";
 import { Event } from "@/types/schedule";
 import { Audiowide } from "next/font/google";
@@ -53,7 +53,7 @@ export default async function RoundResult({
                     for {eventInfo.EventName}
                 </div>
 
-                <FormatAndLocationSummary nextEvent={eventInfo} />
+                <RaceWeekendSummary nextEvent={eventInfo} />
             </div>
         )
     }

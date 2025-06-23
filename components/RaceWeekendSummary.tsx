@@ -24,7 +24,7 @@ const formatDayAndMonth = (sessionDate: string) => {
 
 const sessionKeys = [1, 2, 3, 4, 5] as const;
 
-export default function FormatAndLocationSummary({ nextEvent, circuitInfo }: FormatAndLocationProps) {
+export default function RaceWeekendSummary({ nextEvent, circuitInfo }: FormatAndLocationProps) {
     return (
         <>
             <div className="p-5 w-full sm:w-3/4 lg:w-2/3 2xl:w-1/2 flex flex-col md:grid grid-cols-2 grid-rows-1 gap-4">
