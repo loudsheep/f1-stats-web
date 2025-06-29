@@ -16,10 +16,16 @@ const audioWide = Audiowide({
 export default async function Home() {
     const res = await fetch(process.env.BACKEND_URL + "/api/schedule");
     const schedule: Event[] = await res.json();
-    const remaining = schedule.filter(
-        (e) => new Date(e.EventDate) >= new Date()
-    );
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Filter to include today's and future events
+    const remaining = schedule.filter((e) => {
+        const eventDate = new Date(e.EventDate);
+        eventDate.setHours(0, 0, 0, 0);
+        return eventDate >= today;
+    });
     const nextEvent = remaining.length > 0 ? remaining[0] : null;
 
     if (nextEvent == null) {
