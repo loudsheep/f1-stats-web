@@ -91,7 +91,7 @@ export default function RaceWeekendSummary({ nextEvent, circuitInfo }: FormatAnd
                 </div>
             </div>
 
-            {circuitInfo && (
+            {(circuitInfo && circuitInfo.info) && (
                 <>
                     <span className="w-full sm:w-3/4 lg:w-2/3 2xl:w-1/2 pl-5 text-xl mt-10">Circuit info</span >
                     <div className="p-5 w-full sm:w-3/4 lg:w-2/3 2xl:w-1/2 flex flex-col md:grid grid-cols-2 grid-rows-4 gap-4">
