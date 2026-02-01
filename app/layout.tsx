@@ -35,7 +35,7 @@ export default function RootLayout({
                     defer={true}
                     src="https://analytics.loudsheep.dev/script.js"
                     data-website-id="f119f855-6dd1-4bf9-8307-a397d9c2691e"
-                    data-domains="loudsheep.dev"
+                    data-domains="f1.loudsheep.dev"
                   />
             </head>
 
